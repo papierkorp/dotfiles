@@ -21,6 +21,7 @@ alias cdt='cd /mnt/c/develop/tmp'
 alias cdc='cd /mnt/c/develop/privat/dotfiles/home'
 alias gitbash='/mnt/c/Program\ Files/Git/bin/bash.exe'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles_windows='/usr/bin/git --git-dir=/mnt/c/Users/Markus/.dotfiles --work-tree=/mnt/c/Users/Markus'
 psql() {
     kubectl exec -it "$1" -n "$2" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
