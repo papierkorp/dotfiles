@@ -2,6 +2,8 @@
 
 Idea from: https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/
 
+to be used together with my Windows dotfiles Repo (used in a WSL)
+
 # Initial Setup
 
 ```bash
