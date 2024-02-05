@@ -9,21 +9,17 @@ to be used together with my Windows dotfiles Repo (used in a WSL)
 ```bash
 mkdir $HOME/.dotfiles
 git init --bare $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles config --local status.showUntrackedFiles no
-dotfiles remote add origin git@github.com:papierkorp/dotfiles.git
-dotfiles add ~/.bash_aliases
-dotfiles push
+alias dotf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotf config --local status.showUntrackedFiles no
+dotf remote add origin git@github.com:papierkorp/dotfiles.git
+dotf add ~/.bash_aliases
+dotf push
 ```
 
 # Usage
-
-!!to be tested!!
 
 ```bash
 git clone --separate-git-dir=$HOME/.dotfiles git@github.com:papierkorp/dotfiles.git tmpdotfiles
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
 rm -r tmpdotfiles
-
-git clone --separate-git-dir=$HOME/.dotfiles git@github.com:papierkorp/dotfiles.git ~
 ```

@@ -19,9 +19,10 @@ alias cdsu='cd /mnt/c/Users/Markus/AppData/Roaming/"Sublime Text"/Packages/User'
 alias cdn='cd ~/.config/nvim/lua/papierkorp/'
 alias cdt='cd /mnt/c/develop/tmp'
 alias cdc='cd /mnt/c/develop/privat/dotfiles/home'
+alias cdh='cd /mnt/c/Users/Markus'
 alias gitbash='/mnt/c/Program\ Files/Git/bin/bash.exe'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dotfiles_windows='/usr/bin/git --git-dir=/mnt/c/Users/Markus/.dotfiles --work-tree=/mnt/c/Users/Markus'
+alias dotf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfw='/usr/bin/git --git-dir=/mnt/c/Users/Markus/.dotfiles --work-tree=/mnt/c/Users/Markus'
 psql() {
     kubectl exec -it "$1" -n "$2" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
