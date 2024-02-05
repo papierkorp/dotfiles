@@ -16,6 +16,13 @@ learned from https://www.youtube.com/watch?v=ZjMzBd1Dqz8 and https://www.youtube
     - word-motion (wW, bB, e ge)
     - jumping (ft, 0$, %)
 
+**Editing**
+
+- Multiline Edit
+    - `<CTRL> + V => hjkl => x (for deletion) / I (for Insert) + <ESC>`
+- Indent One Line
+    - `==`
+
 # KeyMaps
 
 **Help**
