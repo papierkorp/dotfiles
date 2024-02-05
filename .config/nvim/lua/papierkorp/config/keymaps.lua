@@ -48,6 +48,8 @@ vim.api.nvim_set_keymap("v", "q", "gcc", { silent = true, desc = "Comments" })
 -- Indent
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
+opts.desc = "Insert empty line"
+keymap.set("n", "<Leader>o", "o<Esc>", opts)
 
 -- dont copy on delete
 opts.desc = "Dont copy on delete"
