@@ -22,6 +22,29 @@ local config = function()
 		end,
 	})
 
+	-- Specify ESLint configuration file for eslint_d
+	--
+	lint.linters.eslint_d = {
+		args = function()
+			-- if there is .eslintrc.json file in the project use it, else use the global path
+			local args = { "--stdin-filepath", "$FILENAME" }
+
+			local globalEslintConfig = vim.fn.glob("../../defaults/.eslintrc.json", true, true)
+			local localEslintConfig = vim.fn.glob(".eslintrc", true, true)
+
+			if #globalEslintConfig > 0 then
+				vim.list_extend(args, { "--config", globalEslintConfig[1] })
+			elseif #localEslintConfig > 0 then
+				vim.list_extend(args, { "--config", localEslintConfig[1] })
+			end
+
+			-- debugging info
+			print("globalEslintConfig:", vim.inspect(globalEslintConfig))
+			print("localEslintConfig:", vim.inspect(localEslintConfig))
+			return args
+		end,
+	}
+
 	-- keymaps
 	vim.keymap.set("n", "<leader>gl", function()
 		lint.try_lint()
