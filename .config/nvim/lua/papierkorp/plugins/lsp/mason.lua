@@ -20,6 +20,9 @@ local config = function()
             "bashls",
             "groovyls",
             -- "kotlin_language_server",
+            "helm_ls",
+            "dockerls",
+            "docker_compose_language_service",
         },
         automatic_installation = true,
     })
@@ -39,6 +42,7 @@ local config = function()
             "shellcheck", -- bash linter
             "beautysh",   -- bash formatter
             "ktlint",     -- kotlin linter+formatter
+            "trivy",      -- helm linter
         },
     })
 end

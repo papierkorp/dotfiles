@@ -12,6 +12,17 @@ local config = function()
         go = { "revive" },
         sh = { "shellcheck" },
         kotlin = { "ktlint" },
+        C = { "trivy" },
+        -- C = { "trivy" },
+        dart = { "trivy" },
+        docker = { "trivy" },
+        elixir = { "trivy" },
+        helm = { "trivy" },
+        java = { "trivy" },
+        php = { "trivy" },
+        ruby = { "trivy" },
+        rust = { "trivy" },
+        terraform = { "trivy" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

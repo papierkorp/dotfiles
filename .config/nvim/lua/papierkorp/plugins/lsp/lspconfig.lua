@@ -57,6 +57,17 @@ local config = function()
         on_attach = on_attach,
     })
 
+    -- helm server
+    lspconfig["helm_ls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "helm" },
+        settings = {
+            yamlls = {
+                enabled = false,
+            }
+        }
+    })
     -- kotlin server
     -- lspconfig["kotlin_language_server"].setup({
     --     capabilities = capabilities,
@@ -85,6 +96,7 @@ local config = function()
         capabilities = capabilities,
         on_attach = on_attach,
     })
+
     -- ansible server
     lspconfig["ansiblels"].setup({
         filetypes = {
