@@ -52,6 +52,7 @@ return {
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        { "nvim-lua/plenary.nvim" },
     },
     config = config,
 }
