@@ -38,8 +38,8 @@ opts.desc = "current Buffers"
 keymap.set("n", "<leader>bn", ":bnext<CR>", opts)
 opts.desc = "previous Buffer"
 keymap.set("n", "<leader>bp", ":bprevious<CR>", opts)
--- opts.desc = "Show Buffers List"
--- keymap.set("n", "<leader>bl", ":Telescope buffers<CR>", opts)
+opts.desc = "Show Buffers List"
+keymap.set("n", "<leader>bl", ":FzfLua buffers<CR>", opts)
 
 -- Comments
 vim.api.nvim_set_keymap("n", "q", "gcc", { silent = true, desc = "Comments" })
@@ -99,14 +99,18 @@ keymap.set("n", "<esc><esc>", ":silent! nohls<CR>", opts) -- disable search resu
 opts.desc = "fzf"
 keymap.set("n", "<leader>f", ":echo 'fzf'<CR>", opts)
 opts.desc = "Find files"
-keymap.set("n", "<c-P>",
-    "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-opts.desc = "Find String"
-keymap.set("n", "<c-L>",
-    "<cmd>lua require'fzf-lua'.live_grep({ cmd = 'git grep --line-number --column --color=always' })<CR>")
+keymap.set("n", "<leader>ff",
+    "<cmd>lua require('fzf-lua').files()<CR>", opts)
+opts.desc = "Git live_grep"
+keymap.set("n", "<leader>fg",
+    "<cmd>lua require'fzf-lua'.live_grep({ cmd = 'git grep --line-number --column --color=always' })<CR>", opts)
 opts.desc = "Find colorschemes"
-keymap.set("n", "<c-L>",
-    "<cmd>lua require('fzf-lua').colorschemes({winopts = {height=0.33, width=0.33}})<CR>")
+keymap.set("n", "<leader>fc",
+    "<cmd>lua require('fzf-lua').colorschemes({winopts = {height=0.33, width=0.33}})<CR>", opts)
+opts.desc = "Find strings from 2 Folders above"
+keymap.set("n", "<leader>fs",
+    "<cmd>lua require'fzf-lua'.live_grep({ cwd = '../../' })<CR>", opts)
+
 -- Trouble
 opts.desc = "Trouble"
 keymap.set("n", "<leader>x", ":echo 'Trouble'<CR>", opts)
