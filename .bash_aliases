@@ -25,6 +25,8 @@ alias dotf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotfw='/usr/bin/git --git-dir=/mnt/c/Users/Markus/.dotfiles --work-tree=/mnt/c/Users/Markus'
 alias hosts='gsudo vi /mnt/c/Windows/System32/drivers/etc/hosts'
 alias gitalias="gsudo vi /mnt/c/'Program Files'/Git/etc/profile.d/aliases.sh"
+alias cbranch="git branch --show-current"
+alias gitconfig="git config -l --show-scope --show-origin"
 psql() {
     kubectl exec -it "$1" -n "$2" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }

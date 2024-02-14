@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true, desc = "" }
 
+
 -- Home Keys
 opts.desc = "Home"
 keymap.set("n", "<leader>h", ":echo 'Home'<CR>", opts)
@@ -8,6 +9,9 @@ opts.desc = "Lazy Home"
 keymap.set("n", "<leader>hl", ":Lazy home<CR>", opts)
 opts.desc = "Mason Home"
 keymap.set("n", "<leader>hm", ":Mason<CR>", opts)
+opts.desc = "Open help in a new Tab"
+keymap.set('c', 'help', 'tab help', opts)
+keymap.set('n', '<leader>hh', ':tab help<CR>', opts)
 
 -- Pane Navigation
 opts.desc = "Pane Navigation"
@@ -23,18 +27,22 @@ keymap.set("n", "<leader>sv", ":vsplit<CR>", opts)
 opts.desc = "Split bottom"
 keymap.set("n", "<leader>sh", ":split<CR>", opts)
 
+
 opts.desc = "Fast quit"
 keymap.set("n", "<C-q>", ":q<CR>", opts)
 
 -- Navigation
 opts.desc = "Navigation"
--- keymap.set("n", "<J>", "10jzz", opts)
--- keymap.set("n", "<K>", "10kzz", opts)
+keymap.set("n", "<A-j>", "10jzz", opts)
+keymap.set("n", "<A-k>", "10kzz", opts)
 
 -- Buffer
 opts.desc = "Buffers"
 keymap.set("n", "<leader>b", ":echo 'Buffers'<CR>", opts)
-opts.desc = "current Buffers"
+keymap.set("n", "<leader>bb", ":buffer", opts)
+opts.desc = "Go to buffer Number"
+keymap.set("n", "<leader>bb", ":buffer", opts)
+opts.desc = "next Buffer"
 keymap.set("n", "<leader>bn", ":bnext<CR>", opts)
 opts.desc = "previous Buffer"
 keymap.set("n", "<leader>bp", ":bprevious<CR>", opts)
@@ -46,14 +54,16 @@ vim.api.nvim_set_keymap("n", "q", "gcc", { silent = true, desc = "Comments" })
 vim.api.nvim_set_keymap("v", "q", "gcc", { silent = true, desc = "Comments" })
 
 -- Indent
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
+opts.desc = "Indent"
+keymap.set("v", "<", "<gv", opts)
+keymap.set("v", ">", ">gv", opts)
 opts.desc = "Insert empty line"
 keymap.set("n", "<Leader>o", "o<Esc>", opts)
 
 -- dont copy on delete
 opts.desc = "Dont copy on delete"
 keymap.set("n", "x", '"_x', opts)
+keymap.set("v", "x", '"_x', opts)
 keymap.set("n", "d", '"_d', opts)
 keymap.set("v", "d", '"_d', opts)
 
@@ -101,16 +111,38 @@ keymap.set("n", "<leader>f", ":echo 'fzf'<CR>", opts)
 opts.desc = "Find files"
 keymap.set("n", "<leader>ff",
     "<cmd>lua require('fzf-lua').files()<CR>", opts)
+keymap.set("n", "<leader>fff",
+    "<cmd>lua require('fzf-lua').files()<CR>", opts)
+opts.desc = "Find files from 2 dirs upwards from cwd"
+keymap.set("n", "<leader>ffu",
+    "<cmd>lua require('fzf-lua').files({ cwd = '../../'})<CR>", opts)
+opts.desc = "Find files from root /"
+keymap.set("n", "<leader>ffr",
+    "<cmd>lua require('fzf-lua').files({ cwd = '/'})<CR>", opts)
+
 opts.desc = "Git live_grep"
 keymap.set("n", "<leader>fg",
-    "<cmd>lua require'fzf-lua'.live_grep({ cmd = 'git grep --line-number --column --color=always' })<CR>", opts)
+    "<cmd>lua require'fzf-lua'.live_grep_native({ cmd = 'git grep --line-number --column --color=always' })<CR>", opts)
 opts.desc = "Find colorschemes"
 keymap.set("n", "<leader>fc",
     "<cmd>lua require('fzf-lua').colorschemes({winopts = {height=0.33, width=0.33}})<CR>", opts)
-opts.desc = "Find strings from 2 Folders above"
-keymap.set("n", "<leader>fs",
-    "<cmd>lua require'fzf-lua'.live_grep({ cwd = '../../' })<CR>", opts)
 
+opts.desc = "Find strings in cwd"
+keymap.set("n", "<leader>fs",
+    "<cmd>lua require'fzf-lua'.live_grep_glob()<CR>", opts)
+keymap.set("n", "<leader>fss",
+    "<cmd>lua require'fzf-lua'.live_grep_native()<CR>", opts)
+opts.desc = "Find strings from root /"
+keymap.set("n", "<leader>fsr",
+    "<cmd>lua require'fzf-lua'.live_grep({ cwd = '/' })<CR>", opts)
+opts.desc = "Find strings 2 dirs upwards from cwd"
+keymap.set("n", "<leader>fsu",
+    "<cmd>lua require'fzf-lua'.live_grep_native({ cwd = '../../' })<CR>", opts)
+
+
+opts.desc = "Find strings in buffer"
+keymap.set("n", "<leader>fs",
+    "<cmd>lua require'fzf-lua'.lgrep_curbuf()<CR>", opts)
 -- Trouble
 opts.desc = "Trouble"
 keymap.set("n", "<leader>x", ":echo 'Trouble'<CR>", opts)
@@ -141,30 +173,30 @@ opts.desc = "LSP extras"
 keymap.set("n", "<leader>r", ":echo 'LSP extras'<CR>", opts)
 
 opts.desc = "Show LSP references"
-keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
+keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", opts)
+keymap.set("n", "<leader>gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", opts)
 
 opts.desc = "Go to declaration"
 keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
 
 opts.desc = "Show LSP definitions"
-keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+keymap.set("n", "gd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", opts)
+keymap.set("n", "<leader>gd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>", opts)
 
 opts.desc = "Show LSP implementations"
-keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+keymap.set("n", "gi", "<cmd>lua require('fzf-lua').lsp_implementations()<CR>", opts)
+keymap.set("n", "<leader>gi", "<cmd>lua require('fzf-lua').lsp_implementations()<CR>", opts)
 
 opts.desc = "Show LSP type definitions"
-keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
-keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+keymap.set("n", "gt", "<cmd>lua require('fzf-lua').lsp_typdefs<CR>", opts)
+keymap.set("n", "<leader>gt", "<cmd>lua require('fzf-lua').lsp_typdefs<CR>", opts)
 
 opts.desc = "See available code actions"
 keymap.set({ "n", "v" }, "<leader>ga", vim.lsp.buf.code_action, opts)
 
 opts.desc = "Show buffer diagnostics"
-keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+keymap.set("n", "<leader>D", "<cmd>lua require('fzf-lua').diagnostics_document()<CR>", opts)
 
 opts.desc = "Show line diagnostics"
 keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)

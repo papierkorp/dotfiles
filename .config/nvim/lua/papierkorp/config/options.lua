@@ -45,9 +45,20 @@ opt.backup = false
 opt.undodir = vim.fn.expand("~/.vim/undodir")
 opt.undofile = true
 opt.backspace = "indent,eol,start"
-opt.guicursor = "a:blinkon0"
+
+opt.guicursor = "n-v-c:block-Cursor,o:hor50,i-ci-ve:ver25,sm:block-blinkon0"
+-- a:all,n:normal,v:visual,c:command,i:insert,ve:virtualedit,sm:select-mode,o:operator-pending
+-- lCursor=shape of block-cursor,hor50=horizontal-cursor-50%-width,ver25=virutal-cursor-25%-width,blinkon0=disable-blinking
 opt.encoding = "UTF-8"
 opt.clipboard:append("unnamedplus")
 
 -- Recognize special Filetypes
 cmd([[autocmd BufNewFile,BufRead */jenkins/*,*/*jenkins* set filetype=groovy.jenkins]])
+
+-- darker color for visual mode
+vim.api.nvim_exec([[
+  augroup MyVisualHighlight
+    autocmd!
+    autocmd ColorScheme * highlight Visual guibg=#31f1e2 guifg=#000000
+  augroup END
+]], false)
