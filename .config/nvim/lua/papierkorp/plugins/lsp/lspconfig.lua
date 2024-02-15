@@ -125,10 +125,17 @@ local config = function()
     lspconfig["dockerls"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
+        filetypes = {
+            "Dockerfile",
+        },
     })
+
     lspconfig["docker_compose_language_service"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
+        filetypes = {
+            "yaml.docker-compose"
+        }
     })
 end
 

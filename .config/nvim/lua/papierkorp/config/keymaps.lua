@@ -24,9 +24,10 @@ opts.desc = "Splits"
 keymap.set("n", "<leader>s", ":echo 'Splits'<CR>", opts)
 opts.desc = "Split right"
 keymap.set("n", "<leader>sv", ":vsplit<CR>", opts)
+keymap.set("n", "<leader>sr", ":vsplit<CR>", opts)
 opts.desc = "Split bottom"
 keymap.set("n", "<leader>sh", ":split<CR>", opts)
-
+keymap.set("n", "<leader>sb", ":sb<CR>", opts)
 
 opts.desc = "Fast quit"
 keymap.set("n", "<C-q>", ":q<CR>", opts)
@@ -35,6 +36,8 @@ keymap.set("n", "<C-q>", ":q<CR>", opts)
 opts.desc = "Navigation"
 keymap.set("n", "<A-j>", "10jzz", opts)
 keymap.set("n", "<A-k>", "10kzz", opts)
+keymap.set("n", "<A-h>", "10hzz", opts)
+keymap.set("n", "<A-l>", "10lzz", opts)
 
 -- Buffer
 opts.desc = "Buffers"
@@ -48,6 +51,8 @@ opts.desc = "previous Buffer"
 keymap.set("n", "<leader>bp", ":bprevious<CR>", opts)
 opts.desc = "Show Buffers List"
 keymap.set("n", "<leader>bl", ":FzfLua buffers<CR>", opts)
+opts.desc = "Delete current Buffer"
+keymap.set("n", "<leader>bd", ":bd!<CR>", opts)
 
 -- Comments
 vim.api.nvim_set_keymap("n", "q", "gcc", { silent = true, desc = "Comments" })
