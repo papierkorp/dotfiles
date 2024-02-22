@@ -55,6 +55,7 @@ opt.clipboard:append("unnamedplus")
 -- Recognize special Filetypes
 cmd([[autocmd BufNewFile,BufRead */jenkins/*,*/*jenkins* set filetype=groovy.jenkins]])
 cmd([[autocmd BufNewFile,BufRead */*dockerfile* set filetype=Dockerfile]])
+cmd([[autocmd BufNewFile,BufRead */*Dockerfile* set filetype=Dockerfile]])
 cmd([[autocmd BufNewFile,BufRead */*docker*compose* set filetype=yaml.docker-compose]])
 
 -- darker color for visual mode
