@@ -13,6 +13,7 @@ local config = function()
         lua = { "stylua" },
         go = { "gci" },
         bash = { "beautysh" },
+        shell = { "beautysh" },
         sh = { "beautysh" },
         kotlin = { "ktlint" },
     }
