@@ -62,6 +62,6 @@ cmd([[autocmd BufNewFile,BufRead */*docker*compose* set filetype=yaml.docker-com
 vim.api.nvim_exec([[
   augroup MyVisualHighlight
     autocmd!
-    autocmd ColorScheme * highlight Visual guibg=#31f1e2 guifg=#000000
+    autocmd ColorScheme * highlight Visual guibg=#176962 guifg=#000000
   augroup END
 ]], false)
