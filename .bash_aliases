@@ -31,7 +31,7 @@ alias gitalias="gsudo vi /mnt/c/'Program Files'/Git/etc/profile.d/aliases.sh"
 alias cbranch="git branch --show-current"
 alias gitconfig="git config -l --show-scope --show-origin"
 psql() {
-    kubectl exec -it "$1" -n "$2" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
+    kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
 alias vi='nvim'
 export KUBECONFIG=$(find /mnt/c/develop -maxdepth 1 -type f -name 'kubeconfig*' | sed ':a;N;s/\n/:/;ba')
