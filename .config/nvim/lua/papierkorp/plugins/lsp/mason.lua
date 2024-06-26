@@ -23,6 +23,7 @@ local config = function()
             "helm_ls",
             "dockerls",
             "docker_compose_language_service",
+            "gitlab_ci_ls"
         },
         automatic_installation = true,
     })

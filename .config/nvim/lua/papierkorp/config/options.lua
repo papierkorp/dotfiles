@@ -57,6 +57,7 @@ cmd([[autocmd BufNewFile,BufRead */jenkins/*,*/*jenkins* set filetype=groovy.jen
 cmd([[autocmd BufNewFile,BufRead */*dockerfile* set filetype=Dockerfile]])
 cmd([[autocmd BufNewFile,BufRead */*Dockerfile* set filetype=Dockerfile]])
 cmd([[autocmd BufNewFile,BufRead */*docker*compose* set filetype=yaml.docker-compose]])
+cmd([[autocmd BufNewFile,BufRead */*gitlab-ci* set filetype=yaml.gitlab]])
 
 -- darker color for visual mode
 vim.api.nvim_exec([[

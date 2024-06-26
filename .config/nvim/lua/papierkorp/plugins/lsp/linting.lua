@@ -69,7 +69,7 @@ local config = function()
         end
         return "󱉶 " .. table.concat(linters, ", ")
     end
-    vim.keymap.set("n", "<leader>gcl", function()
+    vim.keymap.set("n", "<leader>gci", function()
         vim.print(lint_progress())
     end, { desc = "Show current Linter" })
 end

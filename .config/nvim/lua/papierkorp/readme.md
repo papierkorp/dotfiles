@@ -132,6 +132,22 @@ ls ./plugins/lsp
 - trouble (display diagnostics, references, definitions per telescope)
 - autocomplete (hrsh7th/nvim-cmp, autocomplete..)
 
+# Debugging
+
+*Logs*
+:messages
+:MasonLog
+
+*Data*
+:LspInfo
+:checkhealth
+:checkhealth mason
+
+*in Code*
+leader g c i # => show linter
+leader g c f # => show formatter
+leader g c l # => show lsp
+
 # want to add
 
 inline markdown viewer (write own plugin?)

@@ -2,9 +2,9 @@ local config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local capabilities = cmp_nvim_lsp.default_capabilities()
-    local util = require("lspconfig/util")
+    -- local util = require("lspconfig/util")
 
-    local on_attach = function(client, bufnr)
+    local on_attach = function(bufnr)
         local opts = { noremap = true, silent = true }
         local keymap = vim.keymap
         opts.buffer = bufnr
@@ -82,6 +82,13 @@ local config = function()
     lspconfig.gopls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
+    })
+
+    -- gitlab-ci server
+    lspconfig.gitlab_ci_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "yaml.gitlab" }
     })
 
     -- groovy server

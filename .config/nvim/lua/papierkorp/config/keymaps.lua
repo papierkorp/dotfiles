@@ -177,6 +177,9 @@ keymap.set("n", "<leader>g", ":echo 'LSP'<CR>", opts)
 opts.desc = "LSP extras"
 keymap.set("n", "<leader>r", ":echo 'LSP extras'<CR>", opts)
 
+opts.desc = "Show current LSP"
+keymap.set("n", "<leader>gcl", ":LspInfo<CR>", opts)
+
 opts.desc = "Show LSP references"
 keymap.set("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", opts)
 keymap.set("n", "<leader>gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>", opts)
