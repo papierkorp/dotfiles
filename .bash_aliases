@@ -37,3 +37,4 @@ alias vi='nvim'
 export KUBECONFIG=$(find /mnt/c/develop -maxdepth 1 -type f -name 'kubeconfig*' | sed ':a;N;s/\n/:/;ba')
 export GOPATH=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/cng
