@@ -38,3 +38,4 @@ export KUBECONFIG=$(find /mnt/c/develop -maxdepth 1 -type f -name 'kubeconfig*' 
 # export GOPATH=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/cng
+export PATH=$PATH:/usr/local/pandoc-3.2.1/bin
