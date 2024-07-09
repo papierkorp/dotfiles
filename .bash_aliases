@@ -34,6 +34,7 @@ psql() {
     kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
 alias vi='nvim'
+alias panmddw="pandoc test.md -f markdown -t dokuwiki -o test.txt"
 export KUBECONFIG=$(find /mnt/c/develop -maxdepth 1 -type f -name 'kubeconfig*' | sed ':a;N;s/\n/:/;ba')
 # export GOPATH=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin
