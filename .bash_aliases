@@ -36,7 +36,7 @@ psql() {
 alias vi='nvim'
 alias panmddw="pandoc test.md -f markdown -t dokuwiki -o test.txt"
 export KUBECONFIG=$(find /mnt/c/develop -maxdepth 1 -type f -name 'kubeconfig*' | sed ':a;N;s/\n/:/;ba')
-# export GOPATH=/usr/local/go
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/local/cng
 export PATH=$PATH:/usr/local/pandoc-3.2.1/bin
