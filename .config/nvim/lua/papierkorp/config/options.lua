@@ -63,6 +63,6 @@ cmd([[autocmd BufNewFile,BufRead */*gitlab-ci* set filetype=yaml.gitlab]])
 vim.api.nvim_exec([[
   augroup MyVisualHighlight
     autocmd!
-    autocmd ColorScheme * highlight Visual guibg=#176962 guifg=#000000
+    autocmd ColorScheme * highlight Visual guibg=#ffffff guifg=#000000
   augroup END
 ]], false)
