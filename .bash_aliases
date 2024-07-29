@@ -30,6 +30,7 @@ alias hosts='gsudo vi /mnt/c/Windows/System32/drivers/etc/hosts'
 alias gitalias="gsudo vi /mnt/c/'Program Files'/Git/etc/profile.d/aliases.sh"
 alias cbranch="git branch --show-current"
 alias gitconfig="git config -l --show-scope --show-origin"
+alias kceph="kubectl exec -it -n rook-ceph deployments/rook-ceph-tools -- /bin/bash"
 psql() {
     kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
