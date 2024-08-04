@@ -41,3 +41,4 @@ export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/pandoc-3.2.1/bin
+export TEMPL_EXPERIMENT=rawgo
