@@ -32,7 +32,11 @@ alias hosts='gsudo vi /mnt/c/Windows/System32/drivers/etc/hosts'
 alias gitalias="gsudo vi /mnt/c/'Program Files'/Git/etc/profile.d/aliases.sh"
 alias cbranch="git branch --show-current"
 alias gitconfig="git config -l --show-scope --show-origin"
-alias kceph="kubectl exec -it -n rook-ceph deployments/rook-ceph-tools -- /bin/bash"
+alias cephkube="kubectl exec -it -n rook-ceph deployments/rook-ceph-tools -- /bin/bash"
+alias cephmount="kubectl exec -it $(kubectl get pods -n rook-ceph -l app=rook-direct-mount -o jsonpath='{.items[?(@.status.containerStatuses[0].ready==true)].metadata.name}') -n rook-ceph -- /bin/bash"
+cephpv() {
+    kubectl get pv -o jsonpath="{.spec.csi.volumeAttributes.subvolumePath}" "$1"
+}
 psql() {
     kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
