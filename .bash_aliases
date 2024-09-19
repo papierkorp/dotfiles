@@ -33,7 +33,10 @@ alias gitalias="gsudo vi /mnt/c/'Program Files'/Git/etc/profile.d/aliases.sh"
 alias cbranch="git branch --show-current"
 alias gitconfig="git config -l --show-scope --show-origin"
 alias cephkube="kubectl exec -it -n rook-ceph deployments/rook-ceph-tools -- /bin/bash"
-alias cephmount="kubectl exec -it $(kubectl get pods -n rook-ceph -l app=rook-direct-mount -o jsonpath='{.items[?(@.status.containerStatuses[0].ready==true)].metadata.name}') -n rook-ceph -- /bin/bash"
+alias cephpod="kubectl get pods -n rook-ceph -l app=rook-direct-mount -o jsonpath='{.items[?(@.status.containerStatuses[0].ready==true)].metadata.name}'"
+cephmnt() {
+    kubectl exec -it "$1" -n "rook-ceph" -- /bin/bash
+}
 cephpv() {
     kubectl get pv -o jsonpath="{.spec.csi.volumeAttributes.subvolumePath}" "$1"
 }
