@@ -1,6 +1,8 @@
 alias k=kubectl
 alias kl="kubectl --kubeconfig=/mnt/c/develop/kubeconfig_lab01.yml"
 alias ko="kubectl --kubeconfig=/mnt/c/develop/kubeconfig_ops01.yml"
+alias ghce="gh copilot explain"
+alias ghcs="gh copilot suggest"
 alias token="kubectl create token dashboard -n default"
 alias useops="kubectl config use ops02-markus && cd /mnt/c/develop/gitlab/infrastructure/k8s/ops"
 alias uselab="kubectl config use lab02-admin && cd /mnt/c/develop/gitlab/infrastructure/k8s/lab"
