@@ -45,6 +45,10 @@ cephpv() {
 psql() {
     kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
+dockertest() {
+    docker run -d --name dockertest "$1" tail -f /dev/null
+}
+alias dockertest2 "docker exec -it dockertest /bin/bash"
 alias vi='nvim'
 alias panmddw="pandoc test.md -f markdown -t dokuwiki -o test.txt"
 alias tree='tree -I node_modules'
