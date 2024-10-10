@@ -36,16 +36,16 @@ alias cbranch="git branch --show-current"
 alias gitconfig="git config -l --show-scope --show-origin"
 alias cephkube="kubectl exec -it -n rook-ceph deployments/rook-ceph-tools -- /bin/bash"
 alias cephpod="kubectl get pods -n rook-ceph -l app=rook-direct-mount -o jsonpath='{.items[?(@.status.containerStatuses[0].ready==true)].metadata.name}'"
-dockertest() {
-    docker run -d --name dockertest "$1" tail -f /dev/null
-}
-alias dockertest2 "docker exec -it dockertest /bin/bash"
-cephmnt() {
-    kubectl exec -it "$1" -n "rook-ceph" -- /bin/bash
-}
-cephpv() {
-    kubectl get pv -o jsonpath="{.spec.csi.volumeAttributes.subvolumePath}" "$1"
-}
+alias dockertest="docker run -d --name dockertest $*"
+alias dockertest2="docker exec -it dockertest /bin/bash"
+alias cephmnt="kubectl exec -it '$*' -n 'rook-ceph' -- /bin/bash"
+alias cephpv="kubectl get pv -o jsonpath='{\(.spec.csi.volumeAttributes.subvolumePath)}' '$*'"
+# cephmnt() {
+    # kubectl exec -it "$1" -n "rook-ceph" -- /bin/bash
+# }
+# cephpv() {
+    # kubectl get pv -o jsonpath="{.spec.csi.volumeAttributes.subvolumePath}" "$1"
+# }
 psql() {
     kubectl exec -it "$1-postgresql-0" -n "$1" -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
 }
